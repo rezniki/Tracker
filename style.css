@@ -17,8 +17,34 @@
 }
 
 .tracker__balance {
-    color: rgb(141, 64, 64);
+    color: rgb(161, 62, 62);
+    text-transform: uppercase;
 }
+
+.tracker__card {
+    background: rgb(241, 197, 197);
+}
+
+.tracker__income {
+    color: rgb(88, 36, 36);
+    text-transform: uppercase;
+}
+
+.tracker__income::after {
+    display: block;
+    content: "";
+    height: 1px;
+    background: rgb(88, 36, 36);
+    width: 60px;
+    margin-top: 10px;
+}
+
+.tracker__balance {
+    color: rgb(88, 36, 36);
+}
+
+
+
 
 
 
