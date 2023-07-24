@@ -26,18 +26,23 @@
     background: rgb(241, 197, 197);
     margin-bottom: 50px;
     display: flex;
-    justify-content: space-between;
     padding: 10px;
 }
 
 .tracker__card__income {
     border-right: 1px solid rgb(88, 36, 36);
+    padding-left: 53px;
+    width: 35%;
 }
 
 .tracker__income {
     color: rgb(88, 36, 36);
     text-transform: uppercase;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.tracker__card__expense {
+    padding-left: 60px;
 }
 
 .tracker__expense {
