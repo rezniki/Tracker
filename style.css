@@ -1,12 +1,12 @@
 .tracker {
-    width: 500px;
+    width: 400px;
     margin: 0 auto;
     background: rgb(88, 36, 36);
 }
 
 .tracker__container {
     width: 90%;
-    padding: 30px;
+    padding: 20px;
 }
 
 .tracker__title {
@@ -19,29 +19,116 @@
 .tracker__balance {
     color: rgb(161, 62, 62);
     text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .tracker__card {
     background: rgb(241, 197, 197);
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.tracker__card__income {
+    border-right: 1px solid rgb(88, 36, 36);
 }
 
 .tracker__income {
     color: rgb(88, 36, 36);
     text-transform: uppercase;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.tracker__income::after {
+.tracker__expense {
+    color: rgb(88, 36, 36);
+    text-transform: uppercase;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.tracker__history {
+    color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.tracker__history::after {
     display: block;
     content: "";
     height: 1px;
-    background: rgb(88, 36, 36);
-    width: 60px;
+    background: whitesmoke;
     margin-top: 10px;
+    margin-bottom: 50px;
 }
 
-.tracker__balance {
-    color: rgb(88, 36, 36);
+.tracker__transation {
+    color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
 }
+
+.tracker__transation::after {
+    display: block;
+    content: "";
+    height: 1px;
+    background: whitesmoke;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.tracker__list {
+    color: whitesmoke;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: underline whitesmoke;
+    cursor: pointer;
+}
+
+.tracker__text {
+    background: whitesmoke;
+    padding: 8px 5px;
+    border-radius: 5px;
+    border: none;
+    width: 96%;
+}
+
+.tracker__amount {
+    color: whitesmoke;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: underline whitesmoke;
+    cursor: pointer;
+}
+
+.tracker__positive__income {
+    color: whitesmoke;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: underline whitesmoke;
+    cursor: pointer;
+}
+
+.tracker__amount__text {
+    display: block;
+    margin-bottom: 10px;
+    background: whitesmoke;
+    padding: 8px 5px;
+    border-radius: 5px;
+    border: none;
+    width: 96%;
+}
+
+.tracker__button {
+    background: rgb(241, 197, 197);
+    padding: 8px 5px;
+    border-radius: 5px;
+    width: 99%;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+
+
 
 
 
