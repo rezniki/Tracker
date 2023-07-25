@@ -16,10 +16,17 @@
     padding-bottom: 20px;
 }
 
-.tracker__balance {
+.tracker__balance__text {
     color: rgb(161, 62, 62);
     text-transform: uppercase;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.tracker__balance__number {
+    color: whitesmoke;
+    font-size: 30px;
+    margin-top: 0;
+    padding-left: 5px;
 }
 
 .tracker__card {
@@ -41,6 +48,11 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+.tracker__income__balance {
+    color: green;
+    padding-left: 10px;
+}
+
 .tracker__card__expense {
     padding-left: 60px;
 }
@@ -49,6 +61,11 @@
     color: rgb(88, 36, 36);
     text-transform: uppercase;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.tracker__expense__balance {
+    color: red;
+    padding-left: 12px;
 }
 
 .tracker__history {
@@ -64,6 +81,42 @@
     background: whitesmoke;
     margin-top: 10px;
     margin-bottom: 50px;
+}
+
+.tracker__cash {
+    background: rgb(241, 197, 197);
+    display: flex;
+    justify-content: space-between;
+    border-right: 5px solid green;
+    margin-bottom: 10px;
+}
+
+.tracker__cash__text {
+    color: rgb(88, 36, 36);
+    padding-left: 10px;
+}
+
+.tracker__cash__balance {
+    color: rgb(88, 36, 36);
+    padding-right: 10px;
+}
+
+.tracker__travel {
+    background: rgb(241, 197, 197);
+    display: flex;
+    justify-content: space-between;
+    border-right: 5px solid red;
+    margin-bottom: 30px;
+}
+
+.tracker__travel__text {
+    color: rgb(88, 36, 36);
+    padding-left: 10px;
+}
+
+.tracker__travel__balance {
+    color: rgb(88, 36, 36); 
+    padding-right: 10px;
 }
 
 .tracker__transation {
@@ -113,7 +166,7 @@
     cursor: pointer;
 }
 
-.tracker__amount__text {
+.tracker__amount__number {
     display: block;
     margin-bottom: 10px;
     background: whitesmoke;

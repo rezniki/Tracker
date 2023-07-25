@@ -4,32 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script defer src="app.js"></script>
     <title>Mini-application</title>
 </head>
 <body>
     <main class="tracker">
         <div class="tracker__container">
             <h2 class="tracker__title">Expense Tracker</h2>
-            <p class="tracker__balance">your balance</p>
+            <p class="tracker__balance__text">your balance</p>
+            <p class="tracker__balance__number">$0.00</p>
 
             <div class="tracker__card">
                 <div class="tracker__card__income">
                     <p class="tracker__income">income</p>
+                    <p class="tracker__income__balance">$0.00</p>
                 </div>
                 <div class="tracker__card__expense">
                     <p class="tracker__expense">expense</p>
+                    <p class="tracker__expense__balance">$0.00</p>
                 </div>
             </div>
 
             <p class="tracker__history">History</p>
+            <div class="tracker__cash">
+                <p class="tracker__cash__text">cash</p>
+                <p class="tracker__cash__balance">0</p>
+            </div>
+            <div class="tracker__travel">
+                <p class="tracker__travel__text">travel</p>
+                <p class="tracker__travel__balance">0</p>
+            </div>
             <p class="tracker__transation">add new transation</p>
 
             <p class="tracker__list">text</p>
-            <input class="tracker__text" type="text" placeholder="please add a text"/>
+            <input class="tracker__text" type="text" placeholder="please enter the text"/>
 
             <p class="tracker__amount">amount</p>
             <p class="tracker__positive__income">(negative-expense.positive-income)</p>
-            <input class="tracker__amount__text" type="number" placeholder="please add amount"/>
+            <input class="tracker__amount__number" type="number" placeholder="please enter the amount"/>
             <button class="tracker__button">Add transation</button>
         </div>
     </main>
