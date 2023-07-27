@@ -5,7 +5,8 @@ let trackerData = document.querySelector('.tracker__data');
 let trackerItemText = document.querySelector('.tracker__item__text');
 let trackerItemBalance = document.querySelector('.tracker__item__balance');
 let trackerBalanceNumber = document.querySelector('.tracker__balance__number');
-let trackerIncomeBalance = document.querySelector('.tracker__income__balance'); 
+let trackerIncomeBalance = document.querySelector('.tracker__income__balance');
+let trackerExpenseBalance = document.querySelector('.tracker__expense__balance'); 
 
 trackerButton.onclick = function() {
     let newTrackerItem = document.createElement('div');
@@ -18,15 +19,17 @@ trackerButton.onclick = function() {
     newTrackerItemText.textContent = trackerItemText;
     newTrackerItemBalance.textContent = trackerItemBalance;
     newTrackerItem.append(newTrackerItemText, newTrackerItemBalance);
-    trackerBalanceNumber.textContent = `$${trackerItemBalance}.00`;
-    trackerIncomeBalance.textContent = `$${trackerItemBalance}.00`;
+    trackerBalanceNumber.textContent = `$${trackerItemBalance}.00`; 
+
 
     if (trackerItemBalance < 0) {
         newTrackerItem.classList.add('negative');
+        trackerExpenseBalance.textContent = `$${trackerItemBalance}.00`;
     };
 
     if (trackerItemBalance > 0) {
         newTrackerItem.classList.add('positive');
+        trackerIncomeBalance.textContent = `$${trackerItemBalance}.00`;
     };
 
     trackerData.append(newTrackerItem);
