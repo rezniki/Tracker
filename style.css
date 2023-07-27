@@ -118,6 +118,22 @@
     padding-right: 10px;
 }
 
+.negative {
+    background: rgb(241, 197, 197);
+    display: flex;
+    justify-content: space-between;
+    border-right: 5px solid red;
+    margin-bottom: 30px;
+}
+
+.positive {
+    background: rgb(241, 197, 197);
+    display: flex;
+    justify-content: space-between;
+    border-right: 5px solid green;
+    margin-bottom: 30px;
+}
+
 .tracker__transation {
     color: whitesmoke;
     font-family: Arial, Helvetica, sans-serif;
