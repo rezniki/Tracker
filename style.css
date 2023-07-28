@@ -87,23 +87,6 @@
     background: rgb(241, 197, 197);
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.tracker__item__text {
-    color: rgb(88, 36, 36);
-    padding-left: 10px;
-}
-
-.tracker__item__balance {
-    color: rgb(88, 36, 36);
-    padding-right: 10px;
-}
-
-.tracker__item {
-    background: rgb(241, 197, 197);
-    display: flex;
-    justify-content: space-between;
     border-right: 5px solid red;
     margin-bottom: 30px;
 }
