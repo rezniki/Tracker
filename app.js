@@ -10,8 +10,20 @@ let elementExpBalance = document.querySelector('.tracker__expense__balance');
 
 let myCards = [];
 
+let sumIncome = 0;
+let sumExpense = 0;
+let sumBalance = 0;
+
 const funcMyCards = function(myCard) {
-    console.log(myCard);
+    if (myCard.number > 0) {
+        sumIncome += myCard.number;
+    }
+
+    if (myCard.number < 0) {
+        sumExpense += myCard.number;
+    }
+
+    sumBalance = sumIncome - sumExpense;
 };
 
 myCards.forEach(funcMyCards);
@@ -35,18 +47,16 @@ elementButton.onclick = function() {
         number: elementItBalance
     };
 
-    myCards.push(newCard);
-
-
     if (elementItBalance < 0) {
         newElemItem.classList.add('negative');
         elementExpBalance.textContent = `$${elementItBalance}.00`;
-    };
+    }
 
     if (elementItBalance > 0) {
         newElemItem.classList.add('positive');
         elementInBalance.textContent = `$${elementItBalance}.00`;
-    };
+    }
 
     elementData.append(newElemItem);
+    myCards.push(newCard);
 }
