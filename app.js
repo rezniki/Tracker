@@ -14,20 +14,6 @@ let sumIncome = 0;
 let sumExpense = 0;
 let sumBalance = 0;
 
-const funcMyCards = function(myCard) {
-    if (myCard.number > 0) {
-        sumIncome += myCard.number;
-    }
-
-    if (myCard.number < 0) {
-        sumExpense += myCard.number;
-    }
-
-    sumBalance = sumIncome - sumExpense;
-};
-
-myCards.forEach(funcMyCards);
-
 elementButton.onclick = function() {
     let newElemItem = document.createElement('div');
     newElemItem.className = 'tracker__item';
@@ -59,4 +45,20 @@ elementButton.onclick = function() {
 
     elementData.append(newElemItem);
     myCards.push(newCard);
+
+    const funcMyCards = function(myCard) {
+        if (myCard.number > 0) {
+            sumIncome += myCard.number;
+        }
+    
+        if (myCard.number < 0) {
+            sumExpense += myCard.number;
+        }
+    
+        sumBalance = sumIncome - sumExpense;
+        newElemBalance.textContent = sumBalance;
+    };
+    
+    myCards.forEach(funcMyCards);
+
 }
