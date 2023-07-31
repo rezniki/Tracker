@@ -47,18 +47,19 @@ elementButton.onclick = function() {
     myCards.push(newCard);
 
     const funcMyCards = function(myCard) {
-        if (myCard.number > 0) {
-            sumIncome += myCard.number;
+        let numberMyCard = parseInt(myCard.number);
+        if (numberMyCard > 0) {
+            sumIncome += numberMyCard;
         }
     
-        if (myCard.number < 0) {
-            sumExpense += myCard.number;
+        if (numberMyCard < 0) {
+            sumExpense -= numberMyCard;
         }
-    
-        sumBalance = sumIncome - sumExpense;
-        newElemBalance.textContent = sumBalance;
     };
-    
+
     myCards.forEach(funcMyCards);
 
-}
+    sumBalance = sumIncome - sumExpense;
+
+    
+};
