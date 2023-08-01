@@ -26,28 +26,14 @@ elementButton.onclick = function() {
     newElemText.textContent = elementItText;
     newElemBalance.textContent = elementItBalance;
     newElemItem.append(newElemText, newElemBalance);
-    elementBalance.textContent = `$${elementItBalance}.00`; 
 
     let newCard = {
         text: elementItText,
-        number: elementItBalance
+        balance: elementItBalance,
     };
 
-    if (elementItBalance < 0) {
-        newElemItem.classList.add('negative');
-        elementExpBalance.textContent = `$${elementItBalance}.00`;
-    }
-
-    if (elementItBalance > 0) {
-        newElemItem.classList.add('positive');
-        elementInBalance.textContent = `$${elementItBalance}.00`;
-    }
-
-    elementData.append(newElemItem);
-    myCards.push(newCard);
-
     const funcMyCards = function(myCard) {
-        let numberMyCard = parseInt(myCard.number);
+        let numberMyCard = parseInt(myCard.balance);
         if (numberMyCard > 0) {
             sumIncome += numberMyCard;
         }
@@ -58,8 +44,12 @@ elementButton.onclick = function() {
     };
 
     myCards.forEach(funcMyCards);
+    myCards.push(newCard);
+    elementData.append(newElemItem);
 
     sumBalance = sumIncome - sumExpense;
 
-    
+    elementBalance.textContent = `$${sumBalance}.00`;
+    elementExpBalance.textContent = `$${sumExpense}.00`;
+    elementInBalance.textContent = `$${sumIncome}.00`;
 };
