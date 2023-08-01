@@ -43,8 +43,8 @@ elementButton.onclick = function() {
         }
     };
 
-    myCards.forEach(funcMyCards);
     myCards.push(newCard);
+    myCards.forEach(funcMyCards);
     elementData.append(newElemItem);
 
     sumBalance = sumIncome - sumExpense;
