@@ -10,46 +10,32 @@ let elementExpBalance = document.querySelector('.tracker__expense__balance');
 
 let myCards = [];
 
-let sumIncome = 0;
-let sumExpense = 0;
-let sumBalance = 0;
-
 elementButton.onclick = function() {
-    let newElemItem = document.createElement('div');
-    newElemItem.className = 'tracker__item';
-    let newElemText = document.createElement('p');
-    newElemText.className = 'tracker__item__text';
-    let newElemBalance = document.createElement('p');
-    newElemBalance.className = 'tracker__item__balance';
-    elementItText = elementText.value;
-    elementItBalance = elementNumber.value;
-    newElemText.textContent = elementItText;
-    newElemBalance.textContent = elementItBalance;
-    newElemItem.append(newElemText, newElemBalance);
-
     let newCard = {
         text: elementItText,
-        balance: elementItBalance,
-    };
-
-    const funcMyCards = function(myCard) {
-        let numberMyCard = parseInt(myCard.balance);
-        if (numberMyCard > 0) {
-            sumIncome += numberMyCard;
-        }
-    
-        if (numberMyCard < 0) {
-            sumExpense -= numberMyCard;
-        }
+        balance: +elementItBalance,
     };
 
     myCards.push(newCard);
-    myCards.forEach(funcMyCards);
-    elementData.append(newElemItem);
-
-    sumBalance = sumIncome - sumExpense;
-
-    elementBalance.textContent = `$${sumBalance}.00`;
-    elementExpBalance.textContent = `$${sumExpense}.00`;
-    elementInBalance.textContent = `$${sumIncome}.00`;
+    console.log(myCards);
 };
+
+let renderData = function() {
+    const funcData = function(myCard) {
+        let newElemItem = document.createElement('div');
+        newElemItem.className = 'tracker__item';
+        let newElemText = document.createElement('p');
+        newElemText.className = 'tracker__item__text';
+        let newElemBalance = document.createElement('p');
+        newElemBalance.className = 'tracker__item__balance';
+        newElemText.textContent = myCard.value;
+        newElemBalance.textContent = myCard.value;
+        newElemItem.append(newElemText, newElemBalance);
+        elementData.append(newElemItem);
+    }
+
+    myCards.forEach(funcData);
+};
+
+renderData();
+
