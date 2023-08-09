@@ -14,12 +14,39 @@ let renderData = function() {
         let newElemText = document.createElement('p');
         let newElemBalance = document.createElement('p');
 
+        let sumBalance = 0;
+        let sumIncome = 0;
+        let sumExpense = 0;
+
         newElemItem.className = 'tracker__item';
         newElemText.className = 'tracker__item__text';
         newElemBalance.className = 'tracker__item__balance';
 
         newElemText.textContent = myCard.text;
         newElemBalance.textContent = myCard.balance;
+
+        if (myCard.balance > 0) {
+            elementBalance.textContent = `$${myCard.balance}.00`;
+            elementInBalance.textContent = `$${myCard.balance}.00`;
+            newElemItem.classList.add('positive');
+        };
+
+        if (myCard.balance < 0) {
+            sumExpense += myCard.balance;
+            elementExpBalance.textContent = `$${myCard.balance}.00`;
+            newElemItem.classList.add('negative');
+        };
+
+        if (myCard.balance > 0) {
+            sumIncome += myCard.balance;
+        }
+
+        if (myCard.balance < 0) {
+            sumExpense += myCard.balance;
+        }
+
+        sumBalance = sumIncome - sumExpense;
+        elementBalance.textContent = `$${sumBalance}.00`;
         
         newElemItem.append(newElemText, newElemBalance);
         elementData.append(newElemItem);
@@ -39,7 +66,7 @@ elementButton.onclick = function() {
         balance: +elemItBalance,
     };
 
-    myCards.push(newCard);
+myCards.push(newCard);
     elementData.innerHTML = "";
     renderData();
     console.log(myCards);
