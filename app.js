@@ -8,7 +8,7 @@ let elementExpBalance = document.querySelector('.tracker__expense__balance');
 
 let myCards = [];
 
-let sumBalance = 0;
+// let sumBalance = 0;
 let sumIncome = 0;
 let sumExpense = 0;
 
@@ -35,12 +35,25 @@ let renderData = function() {
             elementExpBalance.textContent = `$${myCard.balance}.00`;
             newElemItem.classList.add('negative');
         };
-
-        sumBalance = sumIncome + sumExpense;
-        elementBalance.textContent = `$${sumBalance}.00`;
         
         newElemItem.append(newElemText, newElemBalance);
         elementData.append(newElemItem);
+
+        sumIncome = myCards.reduce(function(acc, card) {
+            if (card.balance > 0) {
+                return acc + card.balance;
+            }
+        }, 0);
+
+        sumExpense = myCards.reduce(function(acc, card) {
+            if (card.balance < 0) {
+                return acc + card.balance;
+            }
+        }, 0);
+
+        elementInBalance.textContent = `$${sumIncome}.00`;
+        elementExpBalance.textContent = `$${sumExpense}.00`;
+        elementBalance.textContent = `$${sumIncome + sumExpense}.00`;
     }
 
     myCards.forEach(funcData);
@@ -57,13 +70,13 @@ elementButton.onclick = function() {
         balance: +elemItBalance,
     };
 
-    if (newCard.balance > 0) {
-        sumIncome += newCard.balance;
-    }
+    // if (newCard.balance > 0) {
+    //     sumIncome += newCard.balance;
+    // }
 
-    if (newCard.balance < 0) {
-        sumExpense += newCard.balance;
-    }
+    // if (newCard.balance < 0) {
+    //     sumExpense += newCard.balance;
+    // }
 
     myCards.push(newCard);
     elementData.innerHTML = "";
