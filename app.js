@@ -30,20 +30,14 @@ let renderData = function() {
             elementBalance.textContent = `$${myCard.balance}.00`;
             elementInBalance.textContent = `$${myCard.balance}.00`;
             newElemItem.classList.add('positive');
+            sumIncome += myCard.balance;
         };
 
         if (myCard.balance < 0) {
             elementExpBalance.textContent = `$${myCard.balance}.00`;
             newElemItem.classList.add('negative');
-        };
-
-        if (myCard.balance > 0) {
-            sumIncome += myCard.balance;
-        }
-
-        if (myCard.balance < 0) {
             sumExpense += myCard.balance;
-        }
+        };
 
         elementInBalance.textContent = `$${sumIncome}.00`;
         elementExpBalance.textContent = `$${sumExpense}.00`;
