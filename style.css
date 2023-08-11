@@ -91,9 +91,34 @@
     margin-bottom: 30px;
 }
 
+/* .tracker__item::after {
+    display: block;
+    content: "";
+    height: 1px;
+    background: rgb(88, 36, 36);
+} */
+
+/* .tracker__cross {
+    position: relative;
+    border: 1px solid rgb(88, 36, 36);
+    margin-left: 30px;
+    transform: rotate(45deg);
+} */
+
+.tracker__cross {
+    background: rgb(241, 197, 197);
+    background-image: url('Cross-Button.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 5px;
+    border: none;
+    cursor: pointer;
+}
+
 .tracker__item__text {
     color: rgb(88, 36, 36);
-    padding-left: 10px;
+    padding-right: 80px;
 }
 
 .tracker__item__balance {
