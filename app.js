@@ -49,6 +49,10 @@ let renderData = function() {
         
         newElemItem.append(deleteButton, newElemText, newElemBalance);
         elementData.append(newElemItem);
+
+        deleteButton.onclick = function() {
+            console.log('Произошел клик');
+        }
     }
 
     myCards.forEach(funcData);
@@ -57,10 +61,12 @@ let renderData = function() {
 renderData();
 
 elementButton.onclick = function() {
+    let newId = Math.random()
     let elemItText = elementText.value;
     let elemItBalance = elementNumber.value;
 
     let newCard = {
+        id: newId,
         text: elemItText,
         balance: +elemItBalance,
     };
