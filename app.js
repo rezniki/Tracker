@@ -50,8 +50,9 @@ let renderData = function() {
         newElemItem.append(deleteButton, newElemText, newElemBalance);
         elementData.append(newElemItem);
 
-        deleteButton.onclick = function() {
-            console.log('Произошел клик');
+        deleteButton.onclick = function(event) {
+            console.log(event.target);
+            console.log(event.currentTarget);
         }
     }
 
