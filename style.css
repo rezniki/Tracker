@@ -91,9 +91,9 @@
     margin-bottom: 30px;
 }
 
-.tracker__cross {
+.tracker__delete__button {
     background: rgb(241, 197, 197);
-    background-image: url('Cross-Button.png');
+    background-image: url('img/Cross-Button.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

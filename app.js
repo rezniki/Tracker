@@ -16,12 +16,12 @@ let renderData = function() {
     
     const funcData = function(myCard) {
         let newElemItem = document.createElement('div');
-        let newElemCross = document.createElement('button');
+        let deleteButton = document.createElement('button');
         let newElemText = document.createElement('p');
         let newElemBalance = document.createElement('p');
 
         newElemItem.className = 'tracker__item';
-        newElemCross.className = 'tracker__cross';
+        deleteButton.className = 'tracker__delete__button';
         newElemText.className = 'tracker__item__text';
         newElemBalance.className = 'tracker__item__balance';
 
@@ -47,8 +47,7 @@ let renderData = function() {
         sumBalance = sumIncome + sumExpense;
         elementBalance.textContent = `$${sumBalance}.00`;
         
-        newElemItem.append(newElemCross);
-        newElemItem.append(newElemText, newElemBalance);
+        newElemItem.append(deleteButton, newElemText, newElemBalance);
         elementData.append(newElemItem);
     }
 
