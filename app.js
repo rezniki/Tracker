@@ -46,15 +46,19 @@ let renderData = function() {
 
         sumBalance = sumIncome + sumExpense;
         elementBalance.textContent = `$${sumBalance}.00`;
+
+        deleteButton.dataset.id = myCard.id;
+        newElemItem.dataset.id = myCard.id;
         
         newElemItem.append(deleteButton, newElemText, newElemBalance);
         elementData.append(newElemItem);
 
         deleteButton.onclick = function(event) {
-            console.log(event.target);
-            console.log(event.currentTarget);
-        }
-    }
+            myCards = myCards.filter((item) => item.id != event.target.dataset.id);
+            const elemDel = document.querySelector(`.tracker__item[data-id = "${event.target.dataset.id}"]`);
+            elemDel.remove();
+        };
+    };
 
     myCards.forEach(funcData);
 };
