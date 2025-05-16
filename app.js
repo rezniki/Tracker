@@ -99,7 +99,7 @@ themeToggle.onclick = () => {
     localStorage.setItem('theme', next);
 };
 
- // Установка темы при загрузке
+// Установка темы при загрузке
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme') || light;
     document.documentElement.setAttribute('data-theme', savedTheme);
