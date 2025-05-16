@@ -1,86 +1,110 @@
+/* ---------------- DOM-элементы ---------------- */
 let elementText = document.querySelector('.tracker__text');
 let elementNumber = document.querySelector('.tracker__amount__number');
 let elementButton = document.querySelector('.tracker__button');
 let elementData = document.querySelector('.tracker__data');
 let elementBalance = document.querySelector('.tracker__balance__number');
 let elementInBalance = document.querySelector('.tracker__income__balance');
-let elementExpBalance = document.querySelector('.tracker__expense__balance'); 
+let elementExpBalance = document.querySelector('.tracker__expense__balance');
 
-let myCards = [];
+/* ---------------- Данные ---------------- */
+// При первом запуске читаем localStorage, иначе пустой массив
+let myCards = JSON.parse(localStorage.getItem('transactions')) || [];
 
-let sumBalance = 0;
+/* ---------------- Сервисные функции ---------------- */
+// Сохраняем массив в localStorage
+function saveToLocalStorage() {
+    localStorage.setItem('transactions', JSON.stringify(myCards));
+};
 
-let renderData = function() {
+// Очистка старого списка и пересчёт цифр
+function renderData() {
+    elementData.innerHTML = '';
     let sumIncome = 0;
     let sumExpense = 0;
-    
-    const funcData = function(myCard) {
-        let newElemItem = document.createElement('div');
-        let deleteButton = document.createElement('button');
-        let newElemText = document.createElement('p');
-        let newElemBalance = document.createElement('p');
 
-        newElemItem.className = 'tracker__item';
-        deleteButton.className = 'tracker__delete__button';
-        newElemText.className = 'tracker__item__text';
-        newElemBalance.className = 'tracker__item__balance';
+    myCards.forEach(card => {
+        /* --- создаём DOM-элементы --- */
+        let item = document.createElement('div');
+        let delBtn = document.createElement('button');
+        let textP = document.createElement('p');
+        let balP = document.createElement('p');
 
-        newElemText.textContent = myCard.text;
-        newElemBalance.textContent = myCard.balance;
+        item.className = 'tracker__item';
+        delBtn.className = 'tracker__delete__button';
+        textP.className = 'tracker__item__text';
+        balP.className = 'tracker__item__balance';
 
-        if (myCard.balance > 0) {
-            elementBalance.textContent = `$${myCard.balance}.00`;
-            elementInBalance.textContent = `$${myCard.balance}.00`;
-            newElemItem.classList.add('positive');
-            sumIncome += myCard.balance;
+        textP.textContent = card.text;
+        balP.textContent  = card.balance;
+
+        /* --- стили и суммы --- */
+        if (card.balance > 0) {
+            item.classList.add('positive');
+            sumIncome += card.balance;
+        } else {
+            item.classList.add('negative');
+            sumExpense += card.balance;
+        }
+
+        /* --- кнопка удаления --- */
+        delBtn.dataset.id = card.id;
+        delBtn.onclick = () => {
+            myCards = myCards.filter(c => c.id !== card.id);
+            saveToLocalStorage();
+            renderData();
         };
 
-        if (myCard.balance < 0) {
-            elementExpBalance.textContent = `$${myCard.balance}.00`;
-            newElemItem.classList.add('negative');
-            sumExpense += myCard.balance;
-        };
+        /* --- собираем и вставляем --- */
+        item.append(delBtn, textP, balP);
+        elementData.append(item);
+    });
 
-        elementInBalance.textContent = `$${sumIncome}.00`;
-        elementExpBalance.textContent = `$${sumExpense}.00`;
-
-        sumBalance = sumIncome + sumExpense;
-        elementBalance.textContent = `$${sumBalance}.00`;
-
-        deleteButton.dataset.id = myCard.id;
-        newElemItem.dataset.id = myCard.id;
-        
-        newElemItem.append(deleteButton, newElemText, newElemBalance);
-        elementData.append(newElemItem);
-
-        deleteButton.onclick = function(event) {
-            myCards = myCards.filter((item) => item.id != event.target.dataset.id);
-            const elemDel = document.querySelector(`.tracker__item[data-id = "${event.target.dataset.id}"]`);
-            elemDel.remove();
-        };
-    };
-
-    myCards.forEach(funcData);
+    /* --- вывод сумм --- */
+    const total = sumIncome + sumExpense;
+    elementBalance.textContent = `$${total}.00`;
+    elementInBalance.textContent = `$${sumIncome}.00`;
+    elementExpBalance.textContent = `$${sumExpense}.00`;
 };
 
-renderData();
+/* ---------------- первичный рендер ---------------- */
+document.addEventListener('DOMContentLoaded', renderData);
 
-elementButton.onclick = function() {
-    let newId = Math.random()
-    let elemItText = elementText.value;
-    let elemItBalance = elementNumber.value;
+/* ---------------- обработчик добавления ---------------- */
+elementButton.onclick = () => {
+    const text = elementText.value.trim();
+    const value = Number(elementNumber.value);
 
-    let newCard = {
-        id: newId,
-        text: elemItText,
-        balance: +elemItBalance,
-    };
+    if (!text || isNaN(value) || value === 0) return; // простая валидация
 
-    myCards.push(newCard);
-    elementData.innerHTML = "";
+    myCards.push({
+        id: Date.now(),
+        text,
+        balance: value
+    });
+
+    elementText.value = '';
+    elementNumber.value = '';
+
+    saveToLocalStorage();
     renderData();
-    console.log(myCards);
 };
+
+// Переключение темы
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.onclick = () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+};
+
+// Установка темы при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || light;
+    document.documentElement.setAttribute('data-theme', savedTheme);
+});
+
 
 
 
