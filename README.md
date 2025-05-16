@@ -27,20 +27,10 @@ A simple web application for tracking personal income and expenses. Built with H
 5. **Refactored code structure for readability**  
    Extracted functions for rendering and state updates. The logic became more modular and easier to maintain.
 
-## 🚀 Getting Started
-
-1. Clone the repository  
-   `git clone https://github.com/your-username/your-repo-name.git`
-
-2. Open `index.html` in your browser
-
-## 🖼 Preview
-
-![screenshot](screenshot.png)
-
 ## 📄 License
 
 This project is open source and free to use.
+
 git-pages: https://rezniki.github.io/Tracker/
 
 
